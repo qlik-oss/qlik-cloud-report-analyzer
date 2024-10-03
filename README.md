@@ -15,7 +15,11 @@ The Report Analyzer provides a comprehensive dashboard to analyze metered report
 
 It provides information such as:
 
-- xxx
+- Current Month Reports Metric
+- History of Reports Metric
+- Breakdown of Reports Metric by App, Event, Executor (and time periods)
+- Failed Reports
+- Report Execution Duration
 
 ## Installing / Updating
 
