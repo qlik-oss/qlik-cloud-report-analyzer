@@ -1,0 +1,861 @@
+[
+  {
+    "qInfo": {
+      "qId": "JBpjzS",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Monthly Quota",
+      "qDef": "num($(vMonthlyLicensedMeteredReports),'#,##0')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Monthly Quota",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "mFgDNrK",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Date Range",
+      "qDef": "Date(Date(Min(Date))) \u0026 ' - ' \u0026 Date( if( max(Date)\u003e=reloadtime(),reloadtime(),max(Date)))",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Date Range",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "pSmAj",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Months",
+      "qDef": "[Number of Months]",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Months",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "EpwfJe",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Running Total Current Month)",
+      "qDef": "rangesum(   \r\n\tAbove( \n    \tCount(distinct  {$\u003cMonth={'$(vCurrentMonth)'}\u003e}  if(success=1,_ReportID))\n        ,0\n        ,rowno(total)\n\t)\n)\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Running Total Current Month)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "buAFpJ",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Average Per Day Prior MTD",
+      "qDef": "\r\n\nnum(\n\n\t(\n\tCount(distinct {$\u003csuccess={1},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e}  _ReportID)  \n\t/ \n\tCount(distinct {$\u003c[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e}  Date)\n\t)\n\n\n\n\n\n,'#,##0')\n\n \n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Average Per Day Prior MTD",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JZheww",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (CM Peak Date)",
+      "qDef": "Max(total aggr(Count(distinct {$\u003csuccess={1},Month={'$(vCurrentMonth)'}\u003e} _ReportID)  ,Date))",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (CM Peak Date)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "rJVWPA",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Difference vs Prior MTD",
+      "qDef": "num(\r\n\n([Metered Reports (CM)]   - \nCount(distinct {$\u003csuccess={1},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID))\n/\nCount(distinct {$\u003csuccess={1},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID)\n\n\n,'#,##0%')\n\n\u0026 \n\n\npick(\n\n\nsign(\n([Metered Reports (CM)]   - Count(distinct {$\u003csuccess={1},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID))\n/\nCount(distinct {$\u003csuccess={1},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID)\n) +2\n,'▼','-','▲') \n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.0%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "% Difference vs Prior MTD",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "fBwpJL",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (CM)",
+      "qDef": "Count(distinct {$\u003cMonth={'$(vCurrentMonth)'}\u003e} if(success=1,_ReportID))  ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {
+        "baseColor": {
+          "color": "#006580",
+          "index": 6
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (CM)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "jEVXG",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Running Total Current Month)",
+      "qDef": "rangesum(   \r\n\tAbove( \n    \tCount(distinct {$\u003csuccess={1},Date={\"\u003e=$(=MonthStart(reloadtime()))\"}\u003e}  _ReportID)\n        ,0\n        ,[Day Of Month]\n\t)\n)\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Running Total Current Month)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "AFPBRC",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Running Total per Month)",
+      "qDef": "rangesum(   \r\n\tAbove(     \t\n    \tCount( distinct {$\u003csuccess={1}$(vDimSet)\u003e}  _ReportID)        \n        ,0\n        , [Day Of Month]\n\t)\n)\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Running Total per Month)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "aUaGjqg",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App Last Reloaded:",
+      "qDef": "Date(Floor(ReloadTime()))",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App Last Reloaded:",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "cWMGPeD",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App Up to date?",
+      "qDef": "if( Date(reloadtime()) \u003c Today(), '🚩',  '✓' )",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App Up to date?",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "LtLSmpw",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Difference vs Prior MTD",
+      "qDef": "num(\r\n(\n\t(\n\t[Report Failures (Current Month)]\n\t/\n\t[Metered Reports Attempts (Current Month)]\n\t)\n-\n\t(\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID) \n\t/\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} Date) \n\t)\n)\n\n,'#,##0')\n\n\u0026\n\npick(\n\n\nsign(\n(\n\t(\n\t[Report Failures (Current Month)]\n\t/\n\t[Metered Reports Attempts (Current Month)]\n\t)\n-\n\t(\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID) \n\t/\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} Date) \n\t)\n)\n\n) +2\n,'▼','-','▲') \n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "% Difference vs Prior MTD",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HLTYc",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Difference vs Prior MTD",
+      "qDef": "num(\r\n(\n\tCount(distinct {$\u003csuccess={0},Month={'$(vCurrentMonth)'}\u003e} _ReportID) \n\t-\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID) \n)\n/\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID) \n,'#,##0%')\n\n\u0026 \n\npick(\n\n\nsign(\n(\n\tCount(distinct {$\u003csuccess={0},Month={'$(vCurrentMonth)'}\u003e} _ReportID) \n\t-\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID) \n)\n/\n\tCount(distinct {$\u003csuccess={0},[Day Of Month]={\"\u003c=$(=Day(reloadtime()))\"},Month={'$(vPriorMonth)'}\u003e} _ReportID)\n\n\n) +2\n,'▼','-','▲') ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "% Difference vs Prior MTD",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dJZR",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Report Failure Rate  (CM)",
+      "qDef": "[Report Failures (CM)]\r\n/\n[Metered Reports Attempts (Current Month)]\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.0%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {
+        "baseColor": {
+          "color": "#f21919",
+          "index": -1
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Report Failure Rate  (CM)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "hPRXC",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Report Failures (CM)",
+      "qDef": "Count(distinct {$\u003csuccess={0},Month={'$(vCurrentMonth)'}\u003e} _ReportID) ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {
+        "baseColor": {
+          "color": "#b61108",
+          "index": -1
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Report Failures (CM)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "jvpj",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Average Per Day CM)",
+      "qDef": "Count(distinct {$\u003csuccess={1},Month={'$(vCurrentMonth)'}\u003e} _ReportID)  \r\n\n/ \n\nCount(distinct {$\u003csuccess={1},Month={'$(vCurrentMonth)'},Date={\"\u003c=$(=Date(ReloadTime()))\"}\u003e} Date)\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Average Per Day CM)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "suPtz",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Report Execution Duration (hh:mm:ss)",
+      "qDef": "Interval(ReportEndTime-ReportStartTime,'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qLabelExpression": "='Report Execution Duration (hh:mm:ss)'",
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Report Execution Duration (hh:mm:ss)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "quEdfj",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Report Attempts",
+      "qDef": "Count(distinct  _ReportID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {
+        "baseColor": {
+          "color": "#000000",
+          "index": 15
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Metered Report Attempts",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UBdmmb",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Average Per Day)",
+      "qDef": "[Metered Reports] / [Number of Dates Prior to Reload]",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Average Per Day)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "yxvpmj",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Average per Month)",
+      "qDef": "[Metered Reports]  / [Number of Months]",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Average per Month)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "xhBxS",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Peak Day",
+      "qDef": "only( distinct if ( aggr(Count(distinct {$\u003csuccess={1}\u003e} _ReportID)  ,Date) =  Max(total aggr(Count(distinct {$\u003csuccess={1}\u003e} _ReportID)  ,Date)), Date))",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "D",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "M/D/YYYY"
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Peak Day",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "naxuQJD",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Monthly Report Failure Rate  (Average)",
+      "qDef": "[Report Failures] / [Metered Report Attempts] / [Number of Months]\r\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Monthly Report Failure Rate  (Average)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JsauZph",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Number of Months",
+      "qDef": "count (distinct Month)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Number of Months",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "BxJPKR",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports (Peak Day)",
+      "qDef": "Max(total aggr(Count(distinct {$\u003csuccess={1}\u003e} _ReportID)  ,Date))",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports (Peak Day)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "EDtNLZ",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Number of Dates Prior to Reload",
+      "qDef": "count (distinct {\u003cDate={\"\u003c=$(=Date(ReloadTime()))\"}\u003e} Date)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Number of Dates Prior to Reload",
+      "description": "Includes the date of reload",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "EaGe",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports Attempts (Current Month)",
+      "qDef": "Count(distinct {$\u003cMeteredReport={1},Success=,Month={'$(vCurrentMonth)'}\u003e} _ReportID) ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {
+        "baseColor": {
+          "color": "#87205d",
+          "index": 7
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Metered Reports Attempts (Current Month)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "VNxefV",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Report Failures",
+      "qDef": "Count(distinct {$\u003csuccess={0},MeteredReport={1}\u003e} _ReportID) ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Report Failures",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "GzmrrW",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Metered Reports",
+      "qDef": "Count(distinct {$\u003csuccess={1}\u003e} _ReportID)  ",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Metered Reports",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "mTdwupa",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Total Report Audits",
+      "qDef": "Count(distinct _ReportID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "numFormatFromTemplate": true,
+      "coloring": {
+        "baseColor": {
+          "color": "#006580",
+          "index": 6
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Total Report Audits",
+      "description": "",
+      "tags": []
+    }
+  }
+]

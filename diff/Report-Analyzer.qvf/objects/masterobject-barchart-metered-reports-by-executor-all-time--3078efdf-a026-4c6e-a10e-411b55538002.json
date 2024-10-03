@@ -1,0 +1,379 @@
+{
+  "qInfo": {
+    "qId": "3078efdf-a026-4c6e-a10e-411b55538002",
+    "qType": "masterobject"
+  },
+  "qMetaDef": {
+    "title": "Metered Reports by Executor (All Time)",
+    "description": "",
+    "tags": []
+  },
+  "qHyperCubeDef": {
+    "qDimensions": [
+      {
+        "qLibraryId": "JpgDgv",
+        "qDef": {
+          "qGrouping": "N",
+          "qFieldDefs": [],
+          "qFieldLabels": [],
+          "qSortCriterias": [
+            {
+              "qSortByNumeric": 1,
+              "qSortByAscii": 1,
+              "qSortByLoadOrder": 1,
+              "qExpression": {}
+            }
+          ],
+          "qNumberPresentations": [],
+          "qActiveField": 0,
+          "autoSort": true,
+          "cId": "KpygMJh",
+          "othersLabel": "Others"
+        },
+        "qOtherTotalSpec": {
+          "qOtherMode": "OTHER_OFF",
+          "qOtherCounted": {
+            "qv": "10"
+          },
+          "qOtherLimit": {
+            "qv": "0"
+          },
+          "qOtherLimitMode": "OTHER_GE_LIMIT",
+          "qForceBadValueKeeping": true,
+          "qApplyEvenWhenPossiblyWrongResult": true,
+          "qOtherSortMode": "OTHER_SORT_DESCENDING",
+          "qTotalMode": "TOTAL_OFF",
+          "qReferencedExpression": {}
+        },
+        "qOtherLabel": {
+          "qv": "Others"
+        },
+        "qTotalLabel": {},
+        "qCalcCond": {},
+        "qAttributeExpressions": [],
+        "qAttributeDimensions": [],
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        }
+      }
+    ],
+    "qMeasures": [
+      {
+        "qLibraryId": "GzmrrW",
+        "qDef": {
+          "qTags": [],
+          "qGrouping": "N",
+          "qAccumulate": 0,
+          "qActiveExpression": 0,
+          "qExpressions": [],
+          "autoSort": true,
+          "cId": "KmZB",
+          "numFormatFromTemplate": true,
+          "quarantine": {
+            "qNumFormat": {},
+            "isCustomFormatted": false
+          }
+        },
+        "qSortBy": {
+          "qSortByNumeric": -1,
+          "qSortByLoadOrder": 1,
+          "qExpression": {}
+        },
+        "qAttributeExpressions": [],
+        "qAttributeDimensions": [],
+        "qCalcCond": {},
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        },
+        "qTrendLines": [],
+        "qMiniChartDef": {
+          "qSortBy": {
+            "qExpression": {}
+          },
+          "qOtherTotalSpec": {
+            "qOtherMode": "OTHER_OFF",
+            "qOtherCounted": {},
+            "qOtherLimit": {},
+            "qOtherLimitMode": "OTHER_GT_LIMIT",
+            "qForceBadValueKeeping": true,
+            "qApplyEvenWhenPossiblyWrongResult": true,
+            "qOtherSortMode": "OTHER_SORT_DESCENDING",
+            "qTotalMode": "TOTAL_OFF",
+            "qReferencedExpression": {}
+          },
+          "qMaxNumberPoints": -1,
+          "qAttributeExpressions": []
+        }
+      }
+    ],
+    "qInterColumnSortOrder": [
+      1,
+      0
+    ],
+    "qSuppressMissing": true,
+    "qInitialDataFetch": [
+      {
+        "qLeft": 0,
+        "qTop": 0,
+        "qWidth": 17,
+        "qHeight": 500
+      }
+    ],
+    "qReductionMode": "N",
+    "qMode": "S",
+    "qPseudoDimPos": -1,
+    "qNoOfLeftDims": -1,
+    "qAlwaysFullyExpanded": true,
+    "qMaxStackedCells": 5000,
+    "qCalcCond": {},
+    "qTitle": {},
+    "qCalcCondition": {
+      "qCond": {},
+      "qMsg": {}
+    },
+    "qColumnOrder": [],
+    "qExpansionState": [],
+    "qDynamicScript": [],
+    "columnOrder": [],
+    "qLayoutExclude": {
+      "qHyperCubeDef": {
+        "qDimensions": [],
+        "qMeasures": [],
+        "qInterColumnSortOrder": [],
+        "qInitialDataFetch": [],
+        "qReductionMode": "N",
+        "qMode": "S",
+        "qPseudoDimPos": -1,
+        "qNoOfLeftDims": -1,
+        "qMaxStackedCells": 5000,
+        "qCalcCond": {},
+        "qTitle": {},
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        },
+        "qColumnOrder": [],
+        "qExpansionState": [],
+        "qDynamicScript": []
+      }
+    }
+  },
+  "script": "",
+  "refLine": {
+    "refLines": [],
+    "dimRefLines": [
+      {
+        "show": "",
+        "label": "Last Updated",
+        "showLabel": true,
+        "refLineExpr": {
+          "value": {
+            "qValueExpression": {
+              "qExpr": "=Date(floor(reloadTime()))"
+            }
+          },
+          "label": {
+            "qStringExpression": {
+              "qExpr": "=Date(floor(reloadTime()))"
+            }
+          },
+          "stringValue": ""
+        },
+        "showValue": true,
+        "align": "center",
+        "paletteColor": {
+          "index": -1,
+          "color": "#b61108"
+        },
+        "style": {
+          "lineThickness": 2,
+          "lineType": ""
+        },
+        "coloredBackground": false,
+        "cId": "PvctD"
+      },
+      {
+        "show": {
+          "qValueExpression": {
+            "qExpr": "NOT Today() = Date(floor(ReloadTime()))"
+          }
+        },
+        "label": "Today",
+        "showLabel": true,
+        "refLineExpr": {
+          "value": {
+            "qValueExpression": {
+              "qExpr": "Today()"
+            }
+          },
+          "label": {
+            "qStringExpression": {
+              "qExpr": "Today()"
+            }
+          },
+          "stringValue": ""
+        },
+        "showValue": true,
+        "align": "center",
+        "paletteColor": {
+          "index": -1,
+          "color": "#1916c2"
+        },
+        "style": {
+          "lineThickness": 2,
+          "lineType": ""
+        },
+        "coloredBackground": false,
+        "cId": "ejDmVS"
+      }
+    ]
+  },
+  "showTitles": false,
+  "title": "Metered Reports by Executor (All Time)",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "showDisclaimer": true,
+  "barGrouping": {
+    "grouping": "stacked"
+  },
+  "orientation": "horizontal",
+  "scrollbar": "bar",
+  "scrollStartPos": 0,
+  "gridLine": {
+    "auto": true,
+    "spacing": 2
+  },
+  "dataPoint": {
+    "showLabels": true,
+    "showSegmentLabels": false,
+    "showTotalLabels": true,
+    "auto": true,
+    "labelMode": "share",
+    "labelValueMode": "arc"
+  },
+  "color": {
+    "auto": true,
+    "mode": "primary",
+    "formatting": {
+      "numFormatFromTemplate": true
+    },
+    "useBaseColors": "off",
+    "paletteColor": {
+      "index": 6
+    },
+    "useDimColVal": false,
+    "useMeasureGradient": true,
+    "persistent": true,
+    "expressionIsColor": true,
+    "expressionLabel": "",
+    "measureScheme": "sg",
+    "reverseScheme": false,
+    "dimensionScheme": "12",
+    "autoMinMax": true,
+    "measureMin": 0,
+    "measureMax": 10,
+    "altLabel": "UserName",
+    "byDimDef": {
+      "label": "UserName",
+      "key": "UserName",
+      "type": "expression"
+    }
+  },
+  "legend": {
+    "show": false,
+    "dock": "auto",
+    "showTitle": true
+  },
+  "dimensionAxis": {
+    "continuousAuto": true,
+    "show": "labels",
+    "label": "auto",
+    "dock": "near",
+    "axisDisplayMode": "auto",
+    "maxVisibleItems": 10
+  },
+  "preferContinuousAxis": true,
+  "measureAxis": {
+    "show": "labels",
+    "dock": "near",
+    "spacing": 1,
+    "autoMinMax": true,
+    "minMax": "min",
+    "min": 0,
+    "max": 10
+  },
+  "tooltip": {
+    "auto": true,
+    "hideBasic": false,
+    "chart": {
+      "style": {
+        "size": "medium"
+      }
+    },
+    "data": {}
+  },
+  "visualization": "barchart",
+  "version": "1.35.7",
+  "components": [
+    {
+      "key": "general",
+      "style": {
+        "strokeWidth": "none",
+        "strokeColor": {
+          "index": -1,
+          "color": "#FFFFFF"
+        },
+        "cornerRadius": 0,
+        "innerRadius": 0.55
+      }
+    },
+    {
+      "key": "bar",
+      "style": {
+        "width": 0.42
+      }
+    },
+    {
+      "key": "axis"
+    },
+    {
+      "key": "label"
+    },
+    {
+      "key": "legend"
+    }
+  ],
+  "showMiniChartForContinuousAxis": true,
+  "qLayoutExclude": {
+    "quarantine": {
+      "conditionalShowHide": {
+        "measures": {},
+        "dimensions": {
+          "feaP": {
+            "qCond": {
+              "qv": ""
+            },
+            "qMsg": {
+              "qv": ""
+            }
+          }
+        }
+      }
+    },
+    "disabled": {
+      "qExtendsId": "",
+      "appId": "935b00e4-7f2a-4e3d-aa9e-5dfc471e3d22",
+      "donut": {
+        "showAsDonut": false
+      },
+      "dimensionTitle": false
+    }
+  },
+  "appId": "9717847c-4d45-4f9e-b0b5-e1b77ffa6ab8",
+  "masterVersion": 0.96
+}
