@@ -1,0 +1,334 @@
+[
+  {
+    "qInfo": {
+      "qId": "umpFPq",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "Date"
+      ],
+      "qFieldLabels": [
+        "Date"
+      ],
+      "qAlias": "Date",
+      "title": "Date",
+      "coloring": {
+        "changeHash": "0.5055249906564305",
+        "hasValueColors": false,
+        "colorMapRef": "umpFPq"
+      }
+    },
+    "qMetaDef": {
+      "title": "Date",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "hseLJR",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "C",
+      "qFieldDefs": [
+        "=YearStart(Date)",
+        "=Month",
+        "=Week",
+        "=Date",
+        "=Time(Time#(hour(ReportEndTime),'hh'),'h TT')",
+        "=text([Day Of Week])\r\n",
+        "=Text([Day Of Month])"
+      ],
+      "qFieldLabels": [
+        "Year",
+        "Month",
+        "Week",
+        "Date",
+        "Time of Day",
+        "Day of Week",
+        "Day of Month"
+      ],
+      "qAlias": "Date Cycle",
+      "title": "Date Cycle",
+      "coloring": {
+        "changeHash": "0.2939411850150262",
+        "hasValueColors": false,
+        "colorMapRef": "hseLJR"
+      }
+    },
+    "qMetaDef": {
+      "title": "Date Cycle",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "TFHPk",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=if(MeteredReport=1 and success=0, _ReportID)"
+      ],
+      "qFieldLabels": [
+        "Failed ReportID"
+      ],
+      "qAlias": "Failed ReportID",
+      "title": "Failed ReportID",
+      "coloring": {
+        "changeHash": "0.42830402007425783",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed ReportID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "WzGmdJp",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=_ReportID"
+      ],
+      "qFieldLabels": [
+        "ReportID"
+      ],
+      "qAlias": "ReportID",
+      "title": "ReportID",
+      "coloring": {
+        "changeHash": "0.9564796767158601",
+        "hasValueColors": false,
+        "colorMapRef": "WzGmdJp"
+      }
+    },
+    "qMetaDef": {
+      "title": "ReportID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UBEEVZ",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Pick(success+1,'False','True')"
+      ],
+      "qFieldLabels": [
+        "Success?"
+      ],
+      "qAlias": "Success?",
+      "title": "Success?",
+      "coloring": {
+        "changeHash": "0.16162049365461817",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Success?",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ywedaDP",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Timestamp(ReportEndTime)"
+      ],
+      "qFieldLabels": [
+        "Report End Time"
+      ],
+      "qAlias": "Report End Time",
+      "title": "Report End Time",
+      "coloring": {
+        "changeHash": "0.6865678741083749",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Report End Time",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PnATYn",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Timestamp(ReportStartTime)"
+      ],
+      "qFieldLabels": [
+        "Report Start Time"
+      ],
+      "qAlias": "Report Start Time",
+      "title": "Report Start Time",
+      "coloring": {
+        "changeHash": "0.8040405997581166",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Report Start Time",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "QTDZwF",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=MonthName(ReportEndTime)"
+      ],
+      "qFieldLabels": [
+        "Year Month"
+      ],
+      "qAlias": "Year Month",
+      "title": "Year Month",
+      "coloring": {
+        "changeHash": "0.38133377970874216",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Year Month",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JpgDgv",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "UserName"
+      ],
+      "qFieldLabels": [
+        "User"
+      ],
+      "qAlias": "User",
+      "title": "User",
+      "coloring": {
+        "changeHash": "0.40507514266591604",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "User",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bBcxvf",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppName"
+      ],
+      "qFieldLabels": [
+        "App"
+      ],
+      "qAlias": "App",
+      "title": "App",
+      "coloring": {
+        "changeHash": "0.871948834780047",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JrFcZw",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "MeteredReportEvent"
+      ],
+      "qFieldLabels": [
+        "Report Event"
+      ],
+      "qAlias": "Report Event",
+      "title": "Report Event",
+      "coloring": {
+        "changeHash": "0.5399179844596096",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Report Event",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JWqwj",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "C",
+      "qFieldDefs": [
+        "=AppName",
+        "=MeteredReportEvent",
+        "=UserName"
+      ],
+      "qFieldLabels": [
+        "App",
+        "Reporting Event",
+        "Executor"
+      ],
+      "qAlias": "Dimension Cycle",
+      "title": "Dimension Cycle",
+      "coloring": {
+        "changeHash": "0.47426402874429296",
+        "hasValueColors": false,
+        "colorMapRef": "JWqwj"
+      }
+    },
+    "qMetaDef": {
+      "title": "Dimension Cycle",
+      "description": "",
+      "tags": []
+    }
+  }
+]

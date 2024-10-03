@@ -1,0 +1,83 @@
+{
+  "qInfo": {
+    "qId": "bf78ce99-3b0a-4658-bc29-887c3478eb0d",
+    "qType": "appprops"
+  },
+  "qMetaDef": {},
+  "sheetTitleBgColor": "",
+  "sheetTitleGradientColor": "",
+  "sheetTitleColor": "",
+  "sheetLogoThumbnail": {
+    "qStaticContentUrlDef": {}
+  },
+  "sheetLogoPosition": "",
+  "rtl": false,
+  "theme": "horizon",
+  "disableCellNavMenu": false,
+  "disableCellContextMenu": false,
+  "chartAnimations": true,
+  "presets": [
+    {
+      "id": "default"
+    },
+    {
+      "name": "Presets.Untitled",
+      "id": "hgamNp",
+      "navigationBar": {
+        "components": {
+          "logo": {
+            "show": true,
+            "placement": "left"
+          },
+          "tabsManagerAdvanced": {
+            "show": true,
+            "placement": "left"
+          },
+          "appTitle": {
+            "show": true,
+            "placement": "center"
+          },
+          "insightAdvisor": {
+            "show": true,
+            "placement": "right"
+          },
+          "notificationMenu": {
+            "show": true,
+            "placement": "right"
+          },
+          "appSwitcher": {
+            "show": true,
+            "placement": "right"
+          },
+          "profile": {
+            "show": true,
+            "placement": "right"
+          }
+        }
+      },
+      "toolbar": {
+        "show": true,
+        "components": {
+          "assets": {
+            "show": true,
+            "placement": "left"
+          },
+          "selections": {
+            "show": true,
+            "placement": "left"
+          }
+        }
+      },
+      "sheetHeader": {
+        "components": {
+          "sheetTitle": {
+            "show": true,
+            "placement": "left"
+          }
+        },
+        "show": false
+      }
+    }
+  ],
+  "activePreset": "hgamNp"
+}

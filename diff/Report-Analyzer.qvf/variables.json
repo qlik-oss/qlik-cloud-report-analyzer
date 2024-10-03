@@ -1,0 +1,272 @@
+[
+  {
+    "qInfo": {
+      "qId": "a7e94871-9be6-4bf4-8aa9-6dee008b315d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAllMonthsByTab",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "='Event'",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "90783176-9bae-4110-808d-176ac9741df0",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vu_reloads_page_size",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "100"
+  },
+  {
+    "qInfo": {
+      "qId": "14a0e7ef-7ebc-411c-bfb0-94608f1a442e",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast72Hours",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45520.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "9ec2f82c-9147-428c-a2b9-26a27ace9dba",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vu__report_range",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "365"
+  },
+  {
+    "qInfo": {
+      "qId": "48140b7b-9c0e-41d3-a689-563e1873bca7",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast24Hours",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45522.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "3e234dcb-d72e-4e71-b851-e66ca65c786c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCurrentMonthContainerTab",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "By Day",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "3bae31b0-cf85-4096-bddb-66a3a49c11c1",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMinDateNumber",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45383"
+  },
+  {
+    "qInfo": {
+      "qId": "be65f42e-af2a-4a31-8eff-1b26e6e9a486",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCurrentMonthTab",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "='Event'",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "056520ff-1862-4598-9d0b-93ea2d417df6",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLatestVersion",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "57a8abc9-8772-4242-b88c-619dd908c38d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast60Days",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45463.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "f5d8e8c4-4da0-4152-964e-161213da3e33",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxDateNumber",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45504"
+  },
+  {
+    "qInfo": {
+      "qId": "3ed7225c-b94a-4381-8af5-f2a26e0f199a",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast7Days",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45516.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "6f4ddba6-709d-4282-a57a-7a6931a5f090",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAllMonthsContainerTab",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "Running Total",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "9fefd9cc-ee2d-4491-829d-f0f363aad88d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast90Days",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45433.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "7ec65fd4-dd0f-4f7e-9f90-46518c2bb1fa",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLast30Days",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45493.707453704"
+  },
+  {
+    "qInfo": {
+      "qId": "e2cf7999-f6f4-40c3-9398-bb1448c289b6",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReportsTab",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "='All'",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "1b910d57-cedf-4954-ac45-13f20f013d64",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "i",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "8"
+  },
+  {
+    "qInfo": {
+      "qId": "302fe4cf-613f-4f7f-8b43-9508b958303d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTableName",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "AuditReports"
+  },
+  {
+    "qInfo": {
+      "qId": "f26a7289-3d26-4ba4-a8d3-fa8df9785b17",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "0",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "0"
+  }
+]

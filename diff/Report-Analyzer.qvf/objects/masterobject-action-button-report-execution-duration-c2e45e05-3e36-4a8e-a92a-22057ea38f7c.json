@@ -1,0 +1,123 @@
+{
+  "qInfo": {
+    "qId": "c2e45e05-3e36-4a8e-a92a-22057ea38f7c",
+    "qType": "masterobject"
+  },
+  "qMetaDef": {
+    "title": "Report Execution Duration",
+    "description": "",
+    "tags": []
+  },
+  "runtimeExpressionEvaluation": true,
+  "actions": [
+    {
+      "actionLabel": "",
+      "actionType": "setVariable",
+      "bookmark": "",
+      "field": "",
+      "variable": "vAllMonthsContainerTab",
+      "showSystemVariables": false,
+      "softLock": false,
+      "value": {
+        "qStringExpression": {
+          "qExpr": "'Duration'"
+        }
+      },
+      "partial": false,
+      "automation": "",
+      "automationId": "",
+      "automationPostData": false,
+      "automationTriggered": false,
+      "automationShowNotification": false,
+      "automationNotificationDuration": 4,
+      "automationOpenLinkSameWindow": false,
+      "cyclicDimensionId": "",
+      "indexStepper": 1,
+      "cId": "bwkuWP"
+    }
+  ],
+  "navigation": {
+    "action": "none",
+    "appId": "",
+    "sheet": "",
+    "chartId": "",
+    "story": "",
+    "websiteUrl": "",
+    "sameWindow": false,
+    "odagLink": ""
+  },
+  "useEnabledCondition": false,
+  "enabledCondition": 1,
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "style": {
+    "label": "Report Execution Duration",
+    "showLabel": true,
+    "icon": {
+      "useIcon": false,
+      "iconType": "",
+      "position": "left"
+    },
+    "font": {
+      "fontFamily": "Source Sans Pro",
+      "useColorExpression": false,
+      "color": {
+        "index": -1,
+        "color": "#ffffff"
+      },
+      "colorExpression": "",
+      "size": 0.5,
+      "sizeFixed": 20,
+      "sizeBehavior": "responsive",
+      "style": {
+        "bold": true,
+        "italic": false,
+        "underline": false
+      },
+      "align": "center"
+    },
+    "background": {
+      "useColorExpression": true,
+      "color": {
+        "index": -1,
+        "color": "none"
+      },
+      "colorExpression": {
+        "qStringExpression": {
+          "qExpr": "If('$(vAllMonthsContainerTab)'='Duration',RGB(161,96,144),RGB(169,179,182))"
+        }
+      },
+      "mode": "none",
+      "useImage": false,
+      "url": {
+        "qStaticContentUrlDef": {}
+      },
+      "size": "auto",
+      "position": "centerCenter"
+    },
+    "border": {
+      "useColorExpression": false,
+      "color": {
+        "index": -1,
+        "color": "none"
+      },
+      "colorExpression": "",
+      "useBorder": false,
+      "radius": 0,
+      "width": 0
+    }
+  },
+  "components": [
+    {
+      "key": "general"
+    }
+  ],
+  "visualization": "action-button",
+  "version": "1.42.2",
+  "masterVersion": 0.96
+}

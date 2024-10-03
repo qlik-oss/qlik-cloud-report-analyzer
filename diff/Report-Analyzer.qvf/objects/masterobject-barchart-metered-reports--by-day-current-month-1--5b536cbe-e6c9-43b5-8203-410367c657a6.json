@@ -1,0 +1,374 @@
+{
+  "qInfo": {
+    "qId": "5b536cbe-e6c9-43b5-8203-410367c657a6",
+    "qType": "masterobject"
+  },
+  "qMetaDef": {
+    "title": "Metered Reports -By Day (Current Month) (1)",
+    "description": "",
+    "tags": []
+  },
+  "qHyperCubeDef": {
+    "qDimensions": [
+      {
+        "qLibraryId": "umpFPq",
+        "qDef": {
+          "qGrouping": "N",
+          "qFieldDefs": [],
+          "qFieldLabels": [],
+          "qSortCriterias": [
+            {
+              "qSortByNumeric": 1,
+              "qSortByAscii": 1,
+              "qSortByLoadOrder": 1,
+              "qExpression": {}
+            }
+          ],
+          "qNumberPresentations": [],
+          "qActiveField": 0,
+          "autoSort": true,
+          "cId": "egsmJW",
+          "othersLabel": "Others"
+        },
+        "qOtherTotalSpec": {
+          "qOtherMode": "OTHER_OFF",
+          "qOtherCounted": {
+            "qv": "10"
+          },
+          "qOtherLimit": {
+            "qv": "0"
+          },
+          "qOtherLimitMode": "OTHER_GE_LIMIT",
+          "qForceBadValueKeeping": true,
+          "qApplyEvenWhenPossiblyWrongResult": true,
+          "qOtherSortMode": "OTHER_SORT_DESCENDING",
+          "qTotalMode": "TOTAL_OFF",
+          "qReferencedExpression": {}
+        },
+        "qOtherLabel": {
+          "qv": "Others"
+        },
+        "qTotalLabel": {},
+        "qCalcCond": {},
+        "qAttributeExpressions": [],
+        "qAttributeDimensions": [],
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        }
+      }
+    ],
+    "qMeasures": [
+      {
+        "qLibraryId": "fBwpJL",
+        "qDef": {
+          "qTags": [],
+          "qGrouping": "N",
+          "qAccumulate": 0,
+          "qActiveExpression": 0,
+          "qExpressions": [],
+          "autoSort": true,
+          "cId": "gHrAc",
+          "numFormatFromTemplate": true,
+          "quarantine": {
+            "qNumFormat": {},
+            "isCustomFormatted": false
+          }
+        },
+        "qSortBy": {
+          "qSortByNumeric": -1,
+          "qSortByLoadOrder": 1,
+          "qExpression": {}
+        },
+        "qAttributeExpressions": [
+          {
+            "qExpression": " \r\n \n\tif(\n    \tfloor(aggr(only([Date]),Date)) \u003e floor(ReloadTime()),\n        argb(100,211,211,211), \t\n    \targb(150,0,0,139)\n    )\n    \n    /*\n    pick(weekday(endDate)+1, 0,45,76,105,134,163,193),\n    pick(weekday(endDate)+1, 76,100,124,150,176,203,231),\n    pick(weekday(endDate)+1, 109,132,155,179,204,229,255)\n    )    \n\n\n//128,128,128),\n\n\n//'249, 65, 68',rgb(243, 114, 44),rgb(248, 150, 30),rgb(249, 199, 79),rgb(144, 190, 109),rgb(67, 170, 139),rgb(87, 117, 144)))\n\n\n\n\n\n//argb( \n//\tif(floor(endDate)\u003efloor(Today()), 25, 250) ,\n//    pick(weekday(endDate)+1, 249,243,248,249,144,67,87),\n//    pick(weekday(endDate)+1, 65,114,150,199,190,170,117),\n//    pick(weekday(endDate)+1, 68,44,30,79,109,139,144))    \n",
+            "qAttribute": true,
+            "id": "colorByExpression"
+          }
+        ],
+        "qAttributeDimensions": [],
+        "qCalcCond": {},
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        },
+        "qTrendLines": [],
+        "qMiniChartDef": {
+          "qSortBy": {
+            "qExpression": {}
+          },
+          "qOtherTotalSpec": {
+            "qOtherMode": "OTHER_OFF",
+            "qOtherCounted": {},
+            "qOtherLimit": {},
+            "qOtherLimitMode": "OTHER_GT_LIMIT",
+            "qForceBadValueKeeping": true,
+            "qApplyEvenWhenPossiblyWrongResult": true,
+            "qOtherSortMode": "OTHER_SORT_DESCENDING",
+            "qTotalMode": "TOTAL_OFF",
+            "qReferencedExpression": {}
+          },
+          "qMaxNumberPoints": -1,
+          "qAttributeExpressions": []
+        }
+      }
+    ],
+    "qInterColumnSortOrder": [
+      1,
+      0
+    ],
+    "qSuppressMissing": true,
+    "qInitialDataFetch": [
+      {
+        "qLeft": 0,
+        "qTop": 0,
+        "qWidth": 17,
+        "qHeight": 500
+      }
+    ],
+    "qReductionMode": "N",
+    "qMode": "S",
+    "qPseudoDimPos": -1,
+    "qNoOfLeftDims": -1,
+    "qAlwaysFullyExpanded": true,
+    "qMaxStackedCells": 5000,
+    "qCalcCond": {},
+    "qTitle": {},
+    "qCalcCondition": {
+      "qCond": {},
+      "qMsg": {}
+    },
+    "qColumnOrder": [
+      0,
+      1,
+      2
+    ],
+    "qExpansionState": [],
+    "qDynamicScript": [],
+    "qLayoutExclude": {
+      "qHyperCubeDef": {
+        "qDimensions": [],
+        "qMeasures": [],
+        "qInterColumnSortOrder": [],
+        "qInitialDataFetch": [],
+        "qReductionMode": "N",
+        "qMode": "S",
+        "qPseudoDimPos": -1,
+        "qNoOfLeftDims": -1,
+        "qMaxStackedCells": 5000,
+        "qCalcCond": {},
+        "qTitle": {},
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        },
+        "qColumnOrder": [],
+        "qExpansionState": [],
+        "qDynamicScript": []
+      }
+    }
+  },
+  "script": "",
+  "refLine": {
+    "refLines": [],
+    "dimRefLines": [
+      {
+        "show": {
+          "qValueExpression": {}
+        },
+        "label": {
+          "qStringExpression": {
+            "qExpr": "='Last Updated'"
+          }
+        },
+        "showLabel": true,
+        "refLineExpr": {
+          "value": {
+            "qValueExpression": {
+              "qExpr": "=Date(floor(reloadTime())+.1)"
+            }
+          },
+          "label": {
+            "qStringExpression": {
+              "qExpr": "=Date(floor(reloadTime())+.1)"
+            }
+          },
+          "stringValue": ""
+        },
+        "showValue": true,
+        "align": "center",
+        "paletteColor": {
+          "index": -1,
+          "color": "#a3a8a4"
+        },
+        "style": {
+          "lineThickness": 2,
+          "lineType": "8 4"
+        },
+        "coloredBackground": false,
+        "cId": "ynPUmu"
+      },
+      {
+        "show": {
+          "qValueExpression": {
+            "qExpr": "=Date(Floor(Today()+ $(vReportTimeDiffFromGMT))) \u003e Date(floor(ReloadTime() + $(vReportTimeDiffFromGMT)))"
+          }
+        },
+        "label": "Today",
+        "showLabel": true,
+        "refLineExpr": {
+          "value": {
+            "qValueExpression": {
+              "qExpr": "=Date(Floor(Today()+ $(vReportTimeDiffFromGMT)))"
+            }
+          },
+          "label": {
+            "qStringExpression": {
+              "qExpr": "=Date(Floor(Today()+ $(vReportTimeDiffFromGMT)))"
+            }
+          },
+          "stringValue": ""
+        },
+        "showValue": true,
+        "align": "center",
+        "paletteColor": {
+          "index": -1,
+          "color": "#606060"
+        },
+        "style": {
+          "lineThickness": 2,
+          "lineType": "8 4"
+        },
+        "coloredBackground": false,
+        "cId": "RSBBkgJ"
+      }
+    ]
+  },
+  "showTitles": false,
+  "title": {
+    "qStringExpression": {
+      "qExpr": "'By Day'"
+    }
+  },
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "showDisclaimer": true,
+  "barGrouping": {
+    "grouping": "stacked"
+  },
+  "orientation": "vertical",
+  "scrollbar": "none",
+  "scrollStartPos": 0,
+  "gridLine": {
+    "auto": false,
+    "spacing": 3
+  },
+  "dataPoint": {
+    "showLabels": true,
+    "showSegmentLabels": false,
+    "showTotalLabels": true
+  },
+  "color": {
+    "auto": false,
+    "mode": "byExpression",
+    "formatting": {
+      "numFormatFromTemplate": true
+    },
+    "useBaseColors": "off",
+    "paletteColor": {
+      "index": 6,
+      "color": "#006580"
+    },
+    "useDimColVal": false,
+    "useMeasureGradient": true,
+    "persistent": true,
+    "expressionIsColor": true,
+    "expressionLabel": "",
+    "measureScheme": "sg",
+    "reverseScheme": false,
+    "dimensionScheme": "12",
+    "autoMinMax": true,
+    "measureMin": 0,
+    "measureMax": 10,
+    "altLabel": "Metered Reports",
+    "colorExpression": " \r\n \n\tif(\n    \tfloor(aggr(only([Date]),Date)) \u003e floor(ReloadTime()),\n        argb(100,211,211,211), \t\n    \targb(150,0,0,139)\n    )\n    \n    /*\n    pick(weekday(endDate)+1, 0,45,76,105,134,163,193),\n    pick(weekday(endDate)+1, 76,100,124,150,176,203,231),\n    pick(weekday(endDate)+1, 109,132,155,179,204,229,255)\n    )    \n\n\n//128,128,128),\n\n\n//'249, 65, 68',rgb(243, 114, 44),rgb(248, 150, 30),rgb(249, 199, 79),rgb(144, 190, 109),rgb(67, 170, 139),rgb(87, 117, 144)))\n\n\n\n\n\n//argb( \n//\tif(floor(endDate)\u003efloor(Today()), 25, 250) ,\n//    pick(weekday(endDate)+1, 249,243,248,249,144,67,87),\n//    pick(weekday(endDate)+1, 65,114,150,199,190,170,117),\n//    pick(weekday(endDate)+1, 68,44,30,79,109,139,144))    \n",
+    "byDimDef": {
+      "label": "Date",
+      "key": "Date",
+      "type": "expression"
+    },
+    "byMeasureDef": {
+      "label": "Metered Reports",
+      "key": " Count(distinct {$\u003csuccess={1},Month={'$(vCurrentMonth)'}\u003e} _ReportID)",
+      "type": "expression"
+    }
+  },
+  "legend": {
+    "show": true,
+    "dock": "auto",
+    "showTitle": true
+  },
+  "dimensionAxis": {
+    "continuousAuto": false,
+    "show": "labels",
+    "label": "auto",
+    "dock": "near",
+    "axisDisplayMode": "auto",
+    "maxVisibleItems": 10
+  },
+  "preferContinuousAxis": true,
+  "measureAxis": {
+    "show": "all",
+    "dock": "near",
+    "spacing": 1,
+    "autoMinMax": true,
+    "minMax": "max",
+    "min": 0,
+    "max": 10
+  },
+  "tooltip": {
+    "auto": true,
+    "hideBasic": false,
+    "chart": {
+      "style": {
+        "size": "medium"
+      }
+    },
+    "data": {}
+  },
+  "visualization": "barchart",
+  "version": "1.35.7",
+  "components": [
+    {
+      "key": "general",
+      "borderWidth": "0px"
+    },
+    {
+      "key": "bar"
+    },
+    {
+      "key": "axis"
+    },
+    {
+      "key": "label",
+      "label": {
+        "value": {
+          "fontSize": "14px"
+        }
+      }
+    },
+    {
+      "key": "legend"
+    }
+  ],
+  "showMiniChartForContinuousAxis": true,
+  "appId": "935b00e4-7f2a-4e3d-aa9e-5dfc471e3d22",
+  "qLayoutExclude": {
+    "quarantine": {}
+  },
+  "masterVersion": 0.96
+}

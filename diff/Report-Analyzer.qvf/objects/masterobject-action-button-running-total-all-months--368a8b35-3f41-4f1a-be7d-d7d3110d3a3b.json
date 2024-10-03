@@ -1,0 +1,123 @@
+{
+  "qInfo": {
+    "qId": "368a8b35-3f41-4f1a-be7d-d7d3110d3a3b",
+    "qType": "masterobject"
+  },
+  "qMetaDef": {
+    "title": "Running Total (All Months)",
+    "description": "",
+    "tags": []
+  },
+  "runtimeExpressionEvaluation": true,
+  "actions": [
+    {
+      "actionLabel": "",
+      "actionType": "setVariable",
+      "bookmark": "",
+      "field": "",
+      "variable": "vAllMonthsContainerTab",
+      "showSystemVariables": false,
+      "softLock": false,
+      "value": {
+        "qStringExpression": {
+          "qExpr": "='Running Total'"
+        }
+      },
+      "partial": false,
+      "automation": "",
+      "automationId": "",
+      "automationPostData": false,
+      "automationTriggered": false,
+      "automationShowNotification": false,
+      "automationNotificationDuration": 4,
+      "automationOpenLinkSameWindow": false,
+      "cyclicDimensionId": "",
+      "indexStepper": 1,
+      "cId": "bwkuWP"
+    }
+  ],
+  "navigation": {
+    "action": "none",
+    "appId": "",
+    "sheet": "",
+    "chartId": "",
+    "story": "",
+    "websiteUrl": "",
+    "sameWindow": false,
+    "odagLink": ""
+  },
+  "useEnabledCondition": false,
+  "enabledCondition": 1,
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "style": {
+    "label": "Running Total Per Month",
+    "showLabel": true,
+    "icon": {
+      "useIcon": false,
+      "iconType": "",
+      "position": "left"
+    },
+    "font": {
+      "fontFamily": "Source Sans Pro",
+      "useColorExpression": false,
+      "color": {
+        "index": -1,
+        "color": "#ffffff"
+      },
+      "colorExpression": "",
+      "size": 0.5,
+      "sizeFixed": 20,
+      "sizeBehavior": "responsive",
+      "style": {
+        "bold": true,
+        "italic": false,
+        "underline": false
+      },
+      "align": "center"
+    },
+    "background": {
+      "useColorExpression": true,
+      "color": {
+        "index": -1,
+        "color": "none"
+      },
+      "colorExpression": {
+        "qStringExpression": {
+          "qExpr": "If('$(vAllMonthsContainerTab)'='Running Total',RGB(161,96,144),RGB(169,179,182))"
+        }
+      },
+      "mode": "none",
+      "useImage": false,
+      "url": {
+        "qStaticContentUrlDef": {}
+      },
+      "size": "auto",
+      "position": "centerCenter"
+    },
+    "border": {
+      "useColorExpression": false,
+      "color": {
+        "index": -1,
+        "color": "none"
+      },
+      "colorExpression": "",
+      "useBorder": false,
+      "radius": 0,
+      "width": 0
+    }
+  },
+  "components": [
+    {
+      "key": "general"
+    }
+  ],
+  "visualization": "action-button",
+  "version": "1.42.2",
+  "masterVersion": 0.96
+}
