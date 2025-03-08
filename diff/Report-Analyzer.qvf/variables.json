@@ -116,19 +116,6 @@
   },
   {
     "qInfo": {
-      "qId": "056520ff-1862-4598-9d0b-93ea2d417df6",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vLatestVersion",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    }
-  },
-  {
-    "qInfo": {
       "qId": "57a8abc9-8772-4242-b88c-619dd908c38d",
       "qType": "variable"
     },
