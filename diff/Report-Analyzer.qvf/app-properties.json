@@ -1,7 +1,7 @@
 {
-  "qTitle": "Report Analyzer",
+  "qTitle": "Report Analyzer v1.1.0",
   "qThumbnail": {},
-  "description": "The Report Analyzer provides a comprehensive dashboard to analyze metered report metadata across a Qlik Cloud tenant.\n\nCreated by the Analytics Presales Architecture Team, Qlik\n\n{v1.0.0}",
+  "description": "The Report Analyzer provides a comprehensive dashboard to analyze metered report metadata across a Qlik Cloud tenant.\n\nCreated by the Analytics Presales Architecture Team, Qlik\n\n{v1.1.0}",
   "qUsage": "ANALYTICS",
   "published": false,
   "hassectionaccess": false

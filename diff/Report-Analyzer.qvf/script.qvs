@@ -137,7 +137,7 @@ SUB variables
 
 	SET vIncremental 				 = 1;  // Incremental load flag -- default = 1 (active). This can be disabled by setting to 0 (why do that?)
 	
-	LET vReportsQVD			 		 = '$(vOutputQVDName(AuditReports,$(app_version)))';
+	LET vReportsQVD			 		 = '$(vOutputQVDName(AuditReports,$(app_schema_version)))';
 
 	LET vIncrementalQVDsAvailable    = If(Len(FileTime('$(vReportsQVD)'))>0,1,0);  // Check to see that incremental QVDs are available
 	
@@ -962,7 +962,7 @@ Sub get_audit_reports
 			FROM "links" PK "__KEY_links_u0" FK "__FK_links_u0")
 		FROM JSON (wrap on) "root" PK "__KEY_root"
 		WITH CONNECTION (
-			URL "https://$(vu_tenant_fqdn)/api/v1/audits?limit=$(vu_audit_page_size)&sort=-eventTime&source=com.qlik/reporting-service&eventType=com.qlik.v1.reporting-service.audit$(vISO_8601_Date_Range)$(vNextURL)"
+			URL "https://$(vu_tenant_fqdn)/api/v1/audits?limit=$(vu_audit_page_size)&sort=-eventTime&source=com.qlik/reporting-service&eventType=com.qlik.v1.report.finished$(vISO_8601_Date_Range)$(vNextURL)"
 		);
 
 		[appIds]:
@@ -1145,7 +1145,7 @@ SUB incremental
 	
 	IF $(vIncrementalQVDsAvailable)=1 THEN
 	
-		LET qvd_name = '$(vOutputQVDName(AuditReports,$(app_version)))';
+		LET qvd_name = '$(vOutputQVDName(AuditReports,$(app_schema_version)))';
 
 		TRACE Looking to load: $(qvd_name).;
 		LET file_size = If(IsNull(FileSize('$(qvd_name)')),0,FileSize('$(qvd_name)'));
@@ -1188,7 +1188,7 @@ SUB incremental
 
 	IF NoOfRows('AuditReports')>0 THEN   
 		FOR EACH data_table IN 'AuditReports' //,'AuditReloadLineage','AuditReloadErrors'
-			LET qvd_name = '$(vOutputQVDName($(data_table),$(app_version)))';
+			LET qvd_name = '$(vOutputQVDName($(data_table),$(app_schema_version)))';
 			STORE $(data_table) INTO '$(qvd_name)'(qvd);
 			LET file_size_$(data_table) = FileSize('$(qvd_name)');
 		NEXT data_table
@@ -1443,7 +1443,8 @@ SET comp=;
 LET vTenants = 0;
 
 SET app_name		= 'Report Analyzer';
-SET app_version		= '1.0.0';
+SET app_version		= '1.1.0';
+SET app_schema_version	= 'sv_1.0.0';
 LET comp 			= ComputerName(); 
 LET engine_ver 		= PurgeChar(EngineVersion(),Chr(39)); 
 LET start_msg 		= 'Reloading $(app_name) $(app_version) from $(comp) running QIX Engine version $(engine_ver)';
