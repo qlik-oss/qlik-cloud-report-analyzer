@@ -1,3 +1,33 @@
+///$tab << About >>
+/* 
+
+    ________                          _____     _______              ______                          
+    ___  __ \___________________________  /_    ___    |____________ ___  /____  ____________________
+    __  /_/ /  _ \__  __ \  __ \_  ___/  __/    __  /| |_  __ \  __ `/_  /__  / / /__  /_  _ \_  ___/
+    _  _, _//  __/_  /_/ / /_/ /  /   / /_      _  ___ |  / / / /_/ /_  / _  /_/ /__  /_/  __/  /    
+    /_/ |_| \___/_  .___/\____//_/    \__/      /_/  |_/_/ /_/\__,_/ /_/  _\__, / _____/\___//_/     
+                 /_/                                                      /____/                     
+
+
+    For updates and support, please visit https://github.com/qlik-oss/qlik-cloud-report-analyzer.
+    
+    The Report Analyzer is an application designed for Qlik Cloud to track and analyze 
+    metered report executions within the tenant(s). Some of the benefits of this application are as follows:
+
+      - Current Month Reports Metric
+      - History of Reports Metric
+      - Breakdown of Reports Metric by App, Event, Executor (and time periods)
+      - Failed Reports
+      - Report Execution Duration
+
+    *This application pulls 90 days of report audits, and will then continue to build from there incrementally using QVDs.
+    
+    Originally created by:
+    	Analytics Presales Architecture Team, Qlik
+    
+    Enjoy!
+
+*/
 ///$tab **Configuration **
 TRACE Configuration;
 
@@ -63,7 +93,7 @@ SET vu_initial_days_back = 90;
 /*
 5. The number of days back to calculate report concurrency by the second
 */
-//not in use for now
+// not in use
 SET vu_report_concurrency_days_back = 14;
 
 /*
@@ -72,6 +102,7 @@ SET vu_report_concurrency_days_back = 14;
    There is a 4 MB limit for the REST connector response size, so this variable controls how many reports are brought back in one REST response
    Note that if a single report yields too large of a result (over 4MB), this will not help. That reports may have to be skipped with SET ErrorMode = 0;
 */
+// not in use
 SET vu_reports_page_size = 100;
 
 /*
@@ -177,34 +208,6 @@ SUB variables
 	END IF
 
 END SUB
-///$tab << About >>
-/* 
-
-    ________                          _____     _______              ______                          
-    ___  __ \___________________________  /_    ___    |____________ ___  /____  ____________________
-    __  /_/ /  _ \__  __ \  __ \_  ___/  __/    __  /| |_  __ \  __ `/_  /__  / / /__  /_  _ \_  ___/
-    _  _, _//  __/_  /_/ / /_/ /  /   / /_      _  ___ |  / / / /_/ /_  / _  /_/ /__  /_/  __/  /    
-    /_/ |_| \___/_  .___/\____//_/    \__/      /_/  |_/_/ /_/\__,_/ /_/  _\__, / _____/\___//_/     
-                 /_/                                                      /____/                     
-
-
-    Copyright 2024 QlikTech International
-    Created by the Analytics Presales Architecture Team, Qlik
-
-	About the "Report Analyzer" app:
-    
-    The Report Analyzer is an application designed for Qlik Cloud to track and analyze 
-    metered report executions within the tenant(s). Some of the benefits of this application are as follows:
-
-      - Current Month Reports Metric
-      - History of Reports Metric
-      - Breakdown of Reports Metric by App, Event, Executor (and time periods)
-      - Failed Reports
-      - Report Execution Duration
-
-    *This application pulls 90 days of report audits, and will then continue to build from there incrementally using QVDs.
-
-*/
 ///$tab Check Version
 SUB check_version
 
@@ -857,36 +860,93 @@ END SUB
 ///$tab Audits-reports
 Sub get_audit_reports
 
-	ReportType:
+	// Define categories for trigger types
+    Map_ReportTriggerTypes:
 	MAPPING LOAD * INLINE [
-		@Value_u0,Metered
-		api.public,1
-		automation.execution,1
-		excel-addin.download,1
-		reporttask.execution,1
-		sense-dialog.download,0
-		sense-ondemand.download,1
-		subscription.execution,0
-	];
-	
-	NonMeteredPublicTemplates:
-		MAPPING LOAD * INLINE [
-		TemplateName, NonMetered
-		sense-image-1.0,1
-		sense-sheet-1.0,1
-		sense-data-1.0,1
-	];
-
-	MeteredReportType:
-		LOAD * INLINE [
-		tag,MeteredReportEvent
+		tagName,ReportTriggerType
+        sense-dialog.download,Sense client export
 		api.public,API
-		automation.execution,Automation
-		excel-addin.download,Excel Preview
-		reporttask.execution,Report Task Execution
-		sense-ondemand.download,OnDemand
+        reporttask.execution,Report Task Execution
+        sense-pixelperfect-editor.download,Metered report preview
+        sense-html-editor.download,Metered report preview
+        excel-addin.download,Metered report preview
+        powerpoint-addin.download,Metered report preview
+        word-addin.download,Metered report preview
+        sense-ondemand.download,Metered on demand report
+        share.execution,Image share
+        subscription.download, Subscription
+        subscription.execution, Subscription
+        automation.execution,Automation
 	];
-
+    
+    ReportClassifications:
+    Load
+    	tagName & '&' & templateName					AS _ReportClassKey,
+        metered											AS MeteredReport,
+        reportType 										AS ReportType,
+        ApplyMap('Map_ReportTriggerTypes',tagName,'')	AS ReportTriggerType
+        ;
+    Load * INLINE [
+        tagName, templateName, metered, reportType
+        sense-dialog.download,composition-1.0,0,'Subscription preview'
+        sense-dialog.download,sense-story-1.0,0,'Story download'
+        sense-dialog.download,sense-sheet-1.0,0,'Ad hoc Sheet download'
+        sense-dialog.download,sense-image-1.0,0,'Ad hoc Image download'
+        sense-dialog.download,sense-data-1.0,0,'Data download'
+        
+        api.public,composition-1.0,1,'API sheet report'
+        api.public,sense-excel-template-1.0,1,'API tabular report'
+        api.public,sense-html-template-1.0,1,'API HTML report'
+        api.public,sense-pixel-perfect-template-1.0,1,'API PixelPerfect report'
+        api.public,sense-powerpoint-template-1.0,1,'API Powerpoint report'
+        api.public,sense-word-template-1.0,1,'API Word report'
+        api.public,sense-story-1.0, 0,'API story download'
+        api.public,sense-sheet-1.0, 0,'API sheet download'
+        api.public,sense-image-1.0, 0,'API image download' 
+        
+        reporttask.execution,sense-excel-template-1.0,1,'Report task tabular report'
+        reporttask.execution,sense-html-template-1.0,1,'Report task HTML report'
+        reporttask.execution,sense-pixel-perfect-template-1.0,1,'Report task PixelPerfect report'
+        reporttask.execution,sense-powerpoint-template-1.0,1,'Report task Powerpoint report'
+        reporttask.execution,sense-word-template-1.0,1,'Report task Word report'
+        
+        sense-pixelperfect-editor.download,sense-pixel-perfect-template-1.0,0,'PixelPerfect report preview'
+        sense-html-editor.download,sense-html-template-1.0,0,'HTML report preview'
+        excel-addin.download,sense-excel-template-1.0,0,'Tabular report preview'
+        powerpoint-addin.download,sense-powerpoint-template-1.0,0,'Powerpoint report preview'
+        word-addin.download,sense-word-template-1.0,0,'Word report preview'
+        
+        sense-ondemand.download,sense-excel-template-1.0,1,'OnDemand tabular report'
+        sense-ondemand.download,sense-html-template-1.0,1,'OnDemand HTML report'
+        sense-ondemand.download,sense-pixel-perfect-template-1.0,1,'OnDemand PixelPerfect report'
+        sense-ondemand.download,sense-powerpoint-template-1.0,1,'OnDemand Powerpoint report'
+        sense-ondemand.download,sense-word-template-1.0,1,'OnDemand Word report'
+        
+        share.execution,sense-image-1.0,0,'Ad hoc image share'
+        
+        subscription.download,composition-1.0,0,'Subscription preview'
+        subscription.download,sense-image-1.0,0,'Subscription preview'
+        subscription.execution,composition-1.0,0,'Subscription task report'
+        subscription.execution,sense-image-1.0,0,'Subscription task image'
+        
+        automation.execution,composition-1.0,1,'Automation sheet report'
+        automation.execution,sense-excel-template-1.0,1,'Automation tabular report'
+        automation.execution,sense-html-template-1.0,1,'Automation HTML report'
+        automation.execution,sense-pixel-perfect-template-1.0,1,'Automation PixelPerfect report'
+        automation.execution,sense-powerpoint-template-1.0, 0,'Automation Powerpoint download'
+        automation.execution,sense-word-template-1.0, 0,'Automation Word download'  
+        automation.execution,sense-story-1.0, 0,'Automation story download'
+        automation.execution,sense-sheet-1.0, 0,'Automation sheet download'
+        automation.execution,sense-image-1.0, 0,'Automation image download'
+    ];
+    
+    // Create mapping to drop non-metered reports
+    Map_MeteredReport:
+    MAPPING LOAD
+    	_ReportClassKey,
+        MeteredReport
+    RESIDENT ReportClassifications
+    WHERE MeteredReport = 1;
 
 	LET vCounter = 0;
 	LET vNextURL = '';
@@ -998,7 +1058,6 @@ Sub get_audit_reports
 				[__FK_data_u0]+($(vCounter)*$(vu_audit_page_size))AS [__KEY_data]
 			RESIDENT RestConnectorMasterTable
 			WHERE NOT IsNull([__FK_data_u0])
-			//and [@Value_u0] <> 'subscription.execution'
 		;
 
 		[data_u0]:
@@ -1056,7 +1115,8 @@ Sub get_audit_reports
 			Timestamp([startTime]) as [ReportStartTime],
 			if([success]='True',1,if([success]='False',0)) as success,
 			[templateType],
-			ApplyMap('NonMeteredPublicTemplates',[templateType],0) as TemplateTypeNotMetered,
+            [traceId],
+// 			ApplyMap('NonMeteredPublicTemplates',[templateType],0) as TemplateTypeNotMetered,
 			[version],
 			[__KEY_data_u0],
 			[__KEY_data]
@@ -1082,26 +1142,28 @@ Sub get_audit_reports
 		LEFT JOIN(AuditReports) 
 		LOAD
 			[@Value_u0] as tag,
-			applymap('ReportType',@Value_u0,0) as MeteredReport,
 			[__KEY_data_u0]
 		RESIDENT [tags]; 
 
 		DROP Tables data,data_u0,appIds,tags;
 		DROP Fields __KEY_data,__KEY_root,__KEY_data_u0;
 
-		//Filter Down to Metered Reports only. Can't do this with the /audits endpoint 
+		//Map in Metered Reports flag and filter
 
-		NOCONCATENATE
 		NewAuditReports:
-		LOAD
+        LOAD
+        	*
+        WHERE Metered = 1;
+		NoConcatenate
+        LOAD
 			_ReportID,
-			//[Date],
-			//[ReportEndUTCDate],
+            tag & '&' & templateType									AS _ReportClassKey,
+            ApplyMap('Map_MeteredReport',tag & '&' & templateType,0)	AS Metered,
 			[ReportEndTime],
 			[ReportStartTime],
 			success,
 			[templateType],
-			[TemplateTypeNotMetered],
+            [traceId],
 			[version],
 			[source],
 			[tenantId],
@@ -1109,13 +1171,10 @@ Sub get_audit_reports
 			UserIDwithAuditsReports,
 			AppID,
 			AppIDwithAuditsReports,
-			tag,
-			MeteredReport
+			tag
 		RESIDENT AuditReports
-		WHERE MeteredReport=1
-			AND TemplateTypeNotMetered=0
-			AND LEN([_ReportID])>0
-		;
+		WHERE LEN([_ReportID])>0
+        ;
 
 		DROP TABLE AuditReports;
 		RENAME TABLE NewAuditReports to AuditReports;
@@ -1252,6 +1311,9 @@ SUB transform
 	RENAME TABLE TEMP TO Users;
 	DROP TABLE UsersWithReports;
     
+    //Remove tenantId from Apps so we push back to reports as primary
+    DROP FIELD TenantID FROM Apps;
+    
 	//Date Calendar
 
 	ReportMinDate:
@@ -1313,19 +1375,20 @@ SUB transform
 	LOAD
 		AutoNumber(Date(Floor(Timestamp([ReportEndTime]+ $(vReportTimeDiffFromGMT))))&success,'DateKey') AS _DateKey,
 		_ReportID,
+        _ReportClassKey,
 		Timestamp([ReportEndTime] + $(vReportTimeDiffFromGMT)) AS [ReportEndTime],
 		Timestamp([ReportStartTime] + $(vReportTimeDiffFromGMT)) AS [ReportStartTime],
 		success,
 		[templateType],
+        [traceId],
 		[version],
 		[source],
-		[tenantId],
+		[tenantId]	AS TenantID,
 		UserID,
 		UserIDwithAuditsReports,
 		AppID,
 		AppIDwithAuditsReports,
-		tag,
-		MeteredReport
+		tag
 	RESIDENT AuditReports;
 
 	DROP TABLE AuditReports;
@@ -1443,17 +1506,13 @@ SET comp=;
 LET vTenants = 0;
 
 SET app_name		= 'Report Analyzer';
-SET app_version		= '1.1.0';
-SET app_schema_version	= 'sv_1.0.0';
+SET app_version		= '1.2.0';
+SET app_schema_version	= 'sv_2.0.0';
 LET comp 			= ComputerName(); 
 LET engine_ver 		= PurgeChar(EngineVersion(),Chr(39)); 
 LET start_msg 		= 'Reloading $(app_name) $(app_version) from $(comp) running QIX Engine version $(engine_ver)';
 
 Trace $(startMsg);
-
-
-// REMOVED 'get_data_connections','get_reloads','get_reload_tasks','get_audit_reloads','conns_and_spaces_names'
-// ADDED  check_license_reports, get_audits_reports
 
 SUB load_core_data
 	Trace Loading data...;
@@ -1468,9 +1527,7 @@ END SUB
 
 SUB transform_data
 	Trace Transforming data...;
-	
-	//REMOVE  'reload_concurrency','autonumber'
-	
+		
 	For Each sub_routine in 'transform'
 		Call execute_sub(sub_routine)
 	Next sub_routine

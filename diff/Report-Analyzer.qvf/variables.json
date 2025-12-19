@@ -255,5 +255,19 @@
       "qUseThou": 0
     },
     "qDefinition": "0"
+  },
+  {
+    "qInfo": {
+      "qId": "85a55073-4c65-4d74-8c48-ca627baebda0",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "file_size",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "92746"
   }
 ]

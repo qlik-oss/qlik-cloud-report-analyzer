@@ -1,172 +1,139 @@
 [
   {
     "qInfo": {
-      "qId": "umpFPq",
+      "qId": "FGbmKY",
       "qType": "dimension"
     },
     "qDim": {
       "qGrouping": "N",
       "qFieldDefs": [
-        "Date"
+        "ReportType"
       ],
       "qFieldLabels": [
-        "Date"
+        "Report Type"
       ],
-      "qAlias": "Date",
-      "title": "Date",
+      "qAlias": "Report Type",
+      "title": "Report Type",
       "coloring": {
-        "changeHash": "0.5055249906564305",
-        "hasValueColors": false,
-        "colorMapRef": "umpFPq"
+        "changeHash": "0.6171828420400051",
+        "hasValueColors": false
       }
     },
     "qMetaDef": {
-      "title": "Date",
-      "description": "",
+      "title": "Report Type",
+      "description": "The classification type of the report, specific to both the way in which it was triggered and the template it was generated from.",
       "tags": []
     }
   },
   {
     "qInfo": {
-      "qId": "hseLJR",
+      "qId": "FWjRb",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SpaceName"
+      ],
+      "qFieldLabels": [
+        "Space"
+      ],
+      "qAlias": "Space",
+      "title": "Space",
+      "coloring": {
+        "changeHash": "0.5763795773081871",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Space",
+      "description": "Name of the space in which the app used as the source for the report is stored.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JWqwj",
       "qType": "dimension"
     },
     "qDim": {
       "qGrouping": "C",
       "qFieldDefs": [
-        "=YearStart(Date)",
-        "=Month",
-        "=Week",
-        "=Date",
-        "=Time(Time#(hour(ReportEndTime),'hh'),'h TT')",
-        "=text([Day Of Week])\r\n",
-        "=Text([Day Of Month])"
+        "=AppName",
+        "ReportType",
+        "ReportTriggerType",
+        "=UserName"
       ],
       "qFieldLabels": [
-        "Year",
-        "Month",
-        "Week",
-        "Date",
-        "Time of Day",
-        "Day of Week",
-        "Day of Month"
+        "App",
+        "",
+        "",
+        "Executor"
       ],
-      "qAlias": "Date Cycle",
-      "title": "Date Cycle",
+      "qAlias": "Dimension Cycle",
+      "title": "Dimension Cycle",
       "coloring": {
-        "changeHash": "0.2939411850150262",
+        "changeHash": "0.889365305037448",
         "hasValueColors": false,
-        "colorMapRef": "hseLJR"
+        "colorMapRef": "JWqwj"
       }
     },
     "qMetaDef": {
-      "title": "Date Cycle",
+      "title": "Dimension Cycle",
       "description": "",
       "tags": []
     }
   },
   {
     "qInfo": {
-      "qId": "TFHPk",
+      "qId": "JpgDgv",
       "qType": "dimension"
     },
     "qDim": {
       "qGrouping": "N",
       "qFieldDefs": [
-        "=if(MeteredReport=1 and success=0, _ReportID)"
+        "UserName"
       ],
       "qFieldLabels": [
-        "Failed ReportID"
+        "User"
       ],
-      "qAlias": "Failed ReportID",
-      "title": "Failed ReportID",
+      "qAlias": "User",
+      "title": "User",
       "coloring": {
-        "changeHash": "0.42830402007425783",
+        "changeHash": "0.40507514266591604",
         "hasValueColors": false
       }
     },
     "qMetaDef": {
-      "title": "Failed ReportID",
+      "title": "User",
       "description": "",
       "tags": []
     }
   },
   {
     "qInfo": {
-      "qId": "WzGmdJp",
+      "qId": "JrFcZw",
       "qType": "dimension"
     },
     "qDim": {
       "qGrouping": "N",
       "qFieldDefs": [
-        "=_ReportID"
+        "=ReportTriggerType"
       ],
       "qFieldLabels": [
-        "ReportID"
+        "Report Event"
       ],
-      "qAlias": "ReportID",
-      "title": "ReportID",
+      "qAlias": "Report Event",
+      "title": "Report Event",
       "coloring": {
-        "changeHash": "0.9564796767158601",
+        "changeHash": "0.4942377759958618",
         "hasValueColors": false,
-        "colorMapRef": "WzGmdJp"
+        "colorMapRef": "JrFcZw"
       }
     },
     "qMetaDef": {
-      "title": "ReportID",
-      "description": "",
-      "tags": []
-    }
-  },
-  {
-    "qInfo": {
-      "qId": "UBEEVZ",
-      "qType": "dimension"
-    },
-    "qDim": {
-      "qGrouping": "N",
-      "qFieldDefs": [
-        "=Pick(success+1,'False','True')"
-      ],
-      "qFieldLabels": [
-        "Success?"
-      ],
-      "qAlias": "Success?",
-      "title": "Success?",
-      "coloring": {
-        "changeHash": "0.16162049365461817",
-        "hasValueColors": false
-      }
-    },
-    "qMetaDef": {
-      "title": "Success?",
-      "description": "",
-      "tags": []
-    }
-  },
-  {
-    "qInfo": {
-      "qId": "ywedaDP",
-      "qType": "dimension"
-    },
-    "qDim": {
-      "qGrouping": "N",
-      "qFieldDefs": [
-        "=Timestamp(ReportEndTime)"
-      ],
-      "qFieldLabels": [
-        "Report End Time"
-      ],
-      "qAlias": "Report End Time",
-      "title": "Report End Time",
-      "coloring": {
-        "changeHash": "0.6865678741083749",
-        "hasValueColors": false
-      }
-    },
-    "qMetaDef": {
-      "title": "Report End Time",
-      "description": "",
+      "title": "Report Event",
+      "description": "The type of event that generated the report. Identifies which triggering action caused the report execution.",
       "tags": []
     }
   },
@@ -224,26 +191,79 @@
   },
   {
     "qInfo": {
-      "qId": "JpgDgv",
+      "qId": "TFHPk",
       "qType": "dimension"
     },
     "qDim": {
       "qGrouping": "N",
       "qFieldDefs": [
-        "UserName"
+        "=if(MeteredReport=1 and success=0, _ReportID)"
       ],
       "qFieldLabels": [
-        "User"
+        "Failed ReportID"
       ],
-      "qAlias": "User",
-      "title": "User",
+      "qAlias": "Failed ReportID",
+      "title": "Failed ReportID",
       "coloring": {
-        "changeHash": "0.40507514266591604",
+        "changeHash": "0.42830402007425783",
         "hasValueColors": false
       }
     },
     "qMetaDef": {
-      "title": "User",
+      "title": "Failed ReportID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UBEEVZ",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Pick(success+1,'False','True')"
+      ],
+      "qFieldLabels": [
+        "Success?"
+      ],
+      "qAlias": "Success?",
+      "title": "Success?",
+      "coloring": {
+        "changeHash": "0.16162049365461817",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Success?",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "WzGmdJp",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=_ReportID"
+      ],
+      "qFieldLabels": [
+        "ReportID"
+      ],
+      "qAlias": "ReportID",
+      "title": "ReportID",
+      "coloring": {
+        "changeHash": "0.9564796767158601",
+        "hasValueColors": false,
+        "colorMapRef": "WzGmdJp"
+      }
+    },
+    "qMetaDef": {
+      "title": "ReportID",
       "description": "",
       "tags": []
     }
@@ -276,57 +296,118 @@
   },
   {
     "qInfo": {
-      "qId": "JrFcZw",
+      "qId": "hseLJR",
       "qType": "dimension"
     },
     "qDim": {
-      "qGrouping": "N",
+      "qGrouping": "C",
       "qFieldDefs": [
-        "MeteredReportEvent"
+        "=YearStart(Date)",
+        "=Month",
+        "=Week",
+        "=Date",
+        "=Time(Time#(hour(ReportEndTime),'hh'),'h TT')",
+        "=text([Day Of Week])\r\n",
+        "=Text([Day Of Month])"
       ],
       "qFieldLabels": [
-        "Report Event"
+        "Year",
+        "Month",
+        "Week",
+        "Date",
+        "Time of Day",
+        "Day of Week",
+        "Day of Month"
       ],
-      "qAlias": "Report Event",
-      "title": "Report Event",
+      "qAlias": "Date Cycle",
+      "title": "Date Cycle",
       "coloring": {
-        "changeHash": "0.5399179844596096",
-        "hasValueColors": false
+        "changeHash": "0.2939411850150262",
+        "hasValueColors": false,
+        "colorMapRef": "hseLJR"
       }
     },
     "qMetaDef": {
-      "title": "Report Event",
+      "title": "Date Cycle",
       "description": "",
       "tags": []
     }
   },
   {
     "qInfo": {
-      "qId": "JWqwj",
+      "qId": "pKkZWA",
       "qType": "dimension"
     },
     "qDim": {
-      "qGrouping": "C",
+      "qGrouping": "N",
       "qFieldDefs": [
-        "=AppName",
-        "=MeteredReportEvent",
-        "=UserName"
+        "traceId"
       ],
       "qFieldLabels": [
-        "App",
-        "Reporting Event",
-        "Executor"
+        "Report Trace ID"
       ],
-      "qAlias": "Dimension Cycle",
-      "title": "Dimension Cycle",
+      "qAlias": "Report Trace ID",
+      "title": "Report Trace ID",
       "coloring": {
-        "changeHash": "0.47426402874429296",
-        "hasValueColors": false,
-        "colorMapRef": "JWqwj"
+        "changeHash": "0.5651184737031199",
+        "hasValueColors": false
       }
     },
     "qMetaDef": {
-      "title": "Dimension Cycle",
+      "title": "Report Trace ID",
+      "description": "Log trace ID for the report activity, useful when contacting Qlik for support.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "umpFPq",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "Date"
+      ],
+      "qFieldLabels": [
+        "Date"
+      ],
+      "qAlias": "Date",
+      "title": "Date",
+      "coloring": {
+        "changeHash": "0.5055249906564305",
+        "hasValueColors": false,
+        "colorMapRef": "umpFPq"
+      }
+    },
+    "qMetaDef": {
+      "title": "Date",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ywedaDP",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Timestamp(ReportEndTime)"
+      ],
+      "qFieldLabels": [
+        "Report End Time"
+      ],
+      "qAlias": "Report End Time",
+      "title": "Report End Time",
+      "coloring": {
+        "changeHash": "0.6865678741083749",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Report End Time",
       "description": "",
       "tags": []
     }
