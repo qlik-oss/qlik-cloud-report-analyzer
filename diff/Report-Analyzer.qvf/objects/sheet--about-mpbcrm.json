@@ -1189,8 +1189,8 @@
             "bounds": {
               "height": 65,
               "width": 2,
-              "x": 4.5,
-              "y": 18
+              "x": 4.39581,
+              "y": 22.5
             },
             "condition": {
               "qValueExpression": {}
@@ -1272,13 +1272,7 @@
         "components": [
           {
             "key": "general",
-            "bgColor": {
-              "color": {
-                "index": -1,
-                "color": "#f2f2f2",
-                "alpha": 1
-              }
-            },
+            "bgColor": {},
             "borderWidth": "0px"
           }
         ],

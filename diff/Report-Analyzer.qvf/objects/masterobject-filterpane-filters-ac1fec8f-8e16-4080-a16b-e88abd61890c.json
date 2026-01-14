@@ -197,10 +197,10 @@
           "qDef": {
             "qGrouping": "N",
             "qFieldDefs": [
-              "MeteredReportEvent"
+              "ReportTriggerType"
             ],
             "qFieldLabels": [
-              "MeteredReportEvent"
+              "ReportTriggerType"
             ],
             "qSortCriterias": [
               {
@@ -231,6 +231,58 @@
         },
         "showTitles": true,
         "title": "Report Event",
+        "subtitle": "",
+        "footnote": "",
+        "disableNavMenu": false,
+        "showDetails": true,
+        "showDetailsExpression": false,
+        "visualization": "listbox",
+        "frequencyMax": null
+      },
+      "qChildren": []
+    },
+    {
+      "qProperty": {
+        "qInfo": {
+          "qId": "c3f25f93-42c9-40e3-8042-a8dcc39ca90b",
+          "qType": "listbox"
+        },
+        "qMetaDef": {},
+        "qListObjectDef": {
+          "qLibraryId": "FGbmKY",
+          "qDef": {
+            "qGrouping": "N",
+            "qFieldDefs": [],
+            "qFieldLabels": [],
+            "qSortCriterias": [
+              {
+                "qSortByState": 1,
+                "qSortByNumeric": 1,
+                "qSortByAscii": 1,
+                "qSortByLoadOrder": 1,
+                "qExpression": {}
+              }
+            ],
+            "qNumberPresentations": [],
+            "qActiveField": 0,
+            "autoSort": true,
+            "cId": "HUnHFJ"
+          },
+          "qFrequencyMode": "N",
+          "qShowAlternatives": true,
+          "qInitialDataFetch": [],
+          "qExpressions": [],
+          "showTitles": true,
+          "title": "",
+          "subtitle": "",
+          "footnote": "",
+          "disableNavMenu": false,
+          "showDetails": true,
+          "showDetailsExpression": false,
+          "qOtherTotalSpec": {}
+        },
+        "showTitles": true,
+        "title": "Report Type",
         "subtitle": "",
         "footnote": "",
         "disableNavMenu": false,
@@ -414,10 +466,10 @@
           "qDef": {
             "qGrouping": "N",
             "qFieldDefs": [
-              "Day Of Week2"
+              "Day Of Week"
             ],
             "qFieldLabels": [
-              "ReportEndDayOfMonth"
+              "Day Of Week"
             ],
             "qSortCriterias": [
               {
@@ -453,7 +505,8 @@
         "disableNavMenu": false,
         "showDetails": true,
         "showDetailsExpression": false,
-        "visualization": "listbox"
+        "visualization": "listbox",
+        "frequencyMax": null
       },
       "qChildren": []
     },
@@ -556,6 +609,60 @@
         },
         "showTitles": true,
         "title": "Success?",
+        "subtitle": "",
+        "footnote": "",
+        "disableNavMenu": false,
+        "showDetails": true,
+        "showDetailsExpression": false,
+        "visualization": "listbox"
+      },
+      "qChildren": []
+    },
+    {
+      "qProperty": {
+        "qInfo": {
+          "qId": "706cb0f2-1f93-42c2-bdff-6e30f080dae4",
+          "qType": "listbox"
+        },
+        "qMetaDef": {},
+        "qListObjectDef": {
+          "qDef": {
+            "qGrouping": "N",
+            "qFieldDefs": [
+              "MeteredReport"
+            ],
+            "qFieldLabels": [
+              "MeteredReport"
+            ],
+            "qSortCriterias": [
+              {
+                "qSortByState": 1,
+                "qSortByNumeric": 1,
+                "qSortByAscii": 1,
+                "qSortByLoadOrder": 1,
+                "qExpression": {}
+              }
+            ],
+            "qNumberPresentations": [],
+            "qActiveField": 0,
+            "autoSort": true,
+            "cId": "jQjjTvy"
+          },
+          "qFrequencyMode": "N",
+          "qShowAlternatives": true,
+          "qInitialDataFetch": [],
+          "qExpressions": [],
+          "showTitles": true,
+          "title": "",
+          "subtitle": "",
+          "footnote": "",
+          "disableNavMenu": false,
+          "showDetails": true,
+          "showDetailsExpression": false,
+          "qOtherTotalSpec": {}
+        },
+        "showTitles": true,
+        "title": "MeteredReport",
         "subtitle": "",
         "footnote": "",
         "disableNavMenu": false,

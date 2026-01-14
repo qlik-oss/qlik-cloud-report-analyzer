@@ -5,11 +5,11 @@
       "qType": "sheet"
     },
     "qMetaDef": {
-      "title": "Current Month",
+      "title": "Current Month (Metered)",
       "description": ""
     },
     "creationDate": "2024-07-30T16:53:02.874Z",
-    "rank": 7,
+    "rank": 7.5,
     "thumbnail": {
       "qStaticContentUrlDef": {
         "qUrl": "/api/v1/apps/<appId>/media/files/CurrentMonth.png"
@@ -3151,7 +3151,7 @@
               "height": 96,
               "width": 101,
               "x": -1,
-              "y": 4
+              "y": 3.88252
             },
             "condition": {
               "qValueExpression": {
